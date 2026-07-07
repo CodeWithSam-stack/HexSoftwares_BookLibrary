@@ -1,15 +1,10 @@
-/* ============================================================
-   THE READING ROOM — app.js
-   Personal Library Management System
-   ============================================================ */
-
 const STORAGE_KEY = "reading_room_books_v1";
 const BORROW_DAYS = 14;
 
 let books = [];
 let activeGenreChip = "all";
 
-/* ---------------- STORAGE ---------------- */
+
 function loadBooks() {
   const raw = localStorage.getItem(STORAGE_KEY);
   if (raw) {
@@ -28,7 +23,7 @@ function saveBooks() {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(books));
 }
 
-/* ---------------- UTIL ---------------- */
+
 function formatDate(d) {
   if (!d) return "—";
   const date = new Date(d + "T00:00:00");
@@ -56,13 +51,13 @@ function showToast(msg) {
 }
 
 function slugFallbackCover(title) {
-  // simple colored placeholder if a cover path 404s
+  
   const colors = ["#2f5d4c","#6b4a34","#a13d3d","#4b3763","#b8895a","#2c3e50"];
   const hash = [...title].reduce((a,c)=>a+c.charCodeAt(0),0);
   return colors[hash % colors.length];
 }
 
-/* ---------------- NAVIGATION ---------------- */
+
 function switchView(view) {
   document.querySelectorAll(".view").forEach(v => v.classList.remove("active"));
   document.getElementById(`view-${view}`).classList.add("active");
@@ -92,7 +87,7 @@ document.getElementById("hamburger").addEventListener("click", () => {
   document.getElementById("mainNav").classList.toggle("open");
 });
 
-/* ---------------- HOME VIEW ---------------- */
+
 function renderHome() {
   const total = books.length;
   const available = books.filter(b => b.status === "available").length;
@@ -113,7 +108,7 @@ function renderHome() {
   attachCardListeners(row);
 }
 
-/* ---------------- CATALOG VIEW ---------------- */
+
 function populateGenreOptions() {
   const genres = [...new Set(books.map(b => b.genre))].sort();
   const select = document.getElementById("genreFilter");
@@ -195,7 +190,7 @@ document.getElementById("clearFiltersBtn").addEventListener("click", () => {
   renderCatalog();
 });
 
-/* ---------------- BORROWED VIEW ---------------- */
+
 function renderBorrowed() {
   const mine = books.filter(b => b.status === "borrowed");
   const grid = document.getElementById("borrowedGrid");
@@ -211,7 +206,7 @@ function renderBorrowed() {
   }
 }
 
-/* ---------------- CARD RENDERING ---------------- */
+
 function bookCardHTML(b, showDue = false) {
   const dueInfo = showDue && b.dueDate
     ? `<div class="book-meta"><span>Due ${formatDate(b.dueDate)}</span></div>`
@@ -242,7 +237,7 @@ function attachCardListeners(container) {
   });
 }
 
-/* ---------------- MODAL ---------------- */
+
 const overlay = document.getElementById("modalOverlay");
 const modalBody = document.getElementById("modalBody");
 
@@ -310,7 +305,7 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeModal();
 });
 
-/* ---------------- ACTIONS ---------------- */
+
 function borrowBook(id) {
   const b = books.find(x => x.id === id);
   if (!b || b.status !== "available") return;
@@ -362,7 +357,7 @@ function refreshCurrentView() {
   if (activeView === "borrowed") renderBorrowed();
 }
 
-/* ---------------- ADD BOOK FORM ---------------- */
+
 document.getElementById("addBookForm").addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -404,7 +399,7 @@ document.getElementById("addBookForm").addEventListener("submit", (e) => {
   showToast(`📗 "${title}" added to the catalog.`);
 });
 
-// Simple inline SVG placeholder cover generator for user-added books without an image
+
 function placeholderDataURI(title) {
   const colors = ["#2f5d4c","#6b4a34","#a13d3d","#4b3763","#b8895a","#2c3e50"];
   const hash = [...title].reduce((a,c)=>a+c.charCodeAt(0),0);
@@ -423,7 +418,7 @@ function placeholderDataURI(title) {
 function truncate(str, n) { return str.length > n ? str.slice(0, n - 1) + "…" : str; }
 function escapeXML(str) { return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;"); }
 
-/* ---------------- INIT ---------------- */
+
 function init() {
   loadBooks();
   renderHome();
