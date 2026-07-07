@@ -1,4 +1,3 @@
-// Initial seed catalog — used only the first time the site loads (before localStorage takes over)
 const SEED_BOOKS = [
   {
     id: "b001",
