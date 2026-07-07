@@ -1,4 +1,3 @@
-/* ============ RESET & VARIABLES ============ */
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
 :root {
@@ -40,7 +39,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 input, select, textarea { font-family: inherit; font-size: 15px; }
 a { text-decoration: none; color: inherit; }
 
-/* ============ HEADER ============ */
+
 .site-header {
   position: sticky;
   top: 0;
@@ -108,7 +107,7 @@ a { text-decoration: none; color: inherit; }
   transition: 0.3s;
 }
 
-/* ============ LAYOUT / VIEWS ============ */
+
 .view { display: none; animation: fadeIn 0.35s ease; }
 .view.active { display: block; }
 @keyframes fadeIn {
@@ -116,7 +115,7 @@ a { text-decoration: none; color: inherit; }
   to { opacity: 1; transform: translateY(0); }
 }
 
-/* ============ HERO ============ */
+
 .hero {
   max-width: 1280px;
   margin: 0 auto;
@@ -204,7 +203,7 @@ a { text-decoration: none; color: inherit; }
   letter-spacing: 0.04em;
 }
 
-/* ============ SECTION BLOCKS ============ */
+
 .section-block { max-width: 1280px; margin: 0 auto; padding: 20px 32px 80px; }
 .section-heading {
   display: flex; justify-content: space-between; align-items: baseline;
@@ -227,7 +226,7 @@ a { text-decoration: none; color: inherit; }
   gap: 22px;
 }
 
-/* ============ CATALOG HEADER ============ */
+
 .catalog-header {
   max-width: 1280px;
   margin: 0 auto;
@@ -240,7 +239,7 @@ a { text-decoration: none; color: inherit; }
 }
 .catalog-header p { color: var(--muted); font-size: 16px; }
 
-/* ============ TOOLBAR ============ */
+
 .toolbar {
   max-width: 1280px;
   margin: 24px auto 0;
@@ -316,7 +315,7 @@ a { text-decoration: none; color: inherit; }
   font-size: 14px;
 }
 
-/* ============ BOOK GRID / CARD ============ */
+
 .book-grid {
   max-width: 1280px;
   margin: 18px auto 0;
@@ -401,7 +400,7 @@ a { text-decoration: none; color: inherit; }
 }
 .empty-state p { font-size: 17px; color: var(--muted); margin-bottom: 20px; }
 
-/* ============ FORM (ADD BOOK) ============ */
+
 .add-form {
   max-width: 900px;
   margin: 32px auto 100px;
@@ -438,7 +437,7 @@ a { text-decoration: none; color: inherit; }
 .form-msg.success { color: var(--green); }
 .form-msg.error { color: var(--red); }
 
-/* ============ ABOUT ============ */
+
 .about-content { max-width: 1000px; margin: 0 auto; padding: 24px 32px 100px; }
 .about-content > p { font-size: 17px; color: var(--muted); margin-bottom: 36px; max-width: 720px; }
 .about-grid {
@@ -457,7 +456,7 @@ a { text-decoration: none; color: inherit; }
 .about-card h4 { font-family: var(--font-serif); font-size: 18px; margin-bottom: 8px; }
 .about-card p { font-size: 14.5px; color: var(--muted); }
 
-/* ============ MODAL ============ */
+
 .modal-overlay {
   position: fixed; inset: 0;
   background: rgba(36, 29, 23, 0.6);
@@ -530,7 +529,7 @@ a { text-decoration: none; color: inherit; }
   .modal-cover { aspect-ratio: 16/9; }
 }
 
-/* ============ TOAST ============ */
+
 .toast {
   position: fixed;
   bottom: 28px; left: 50%;
@@ -550,7 +549,7 @@ a { text-decoration: none; color: inherit; }
 }
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-/* ============ FOOTER ============ */
+
 .site-footer {
   background: var(--wood-dark);
   color: #f0e4cf;
@@ -565,7 +564,7 @@ a { text-decoration: none; color: inherit; }
 .site-footer p { font-size: 13.5px; color: var(--brass-light); margin-bottom: 4px; }
 .footer-copy { opacity: 0.7; margin-top: 8px; }
 
-/* ============ RESPONSIVE ============ */
+
 @media (max-width: 900px) {
   .hero { grid-template-columns: 1fr; padding-top: 40px; }
   .hero-stats { grid-template-columns: repeat(4, 1fr); }
